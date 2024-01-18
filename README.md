@@ -1,1 +1,3 @@
 # crash
+
+EDUCATIONAL PURPOSES ONLY
