@@ -1,0 +1,102 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="javascripts/web3.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="javascripts/sizing.js" defer></script>
+    <script src="javascripts/draw.js" defer></script>
+    <script src="javascripts/index.js" defer></script>
+    <script src="javascripts/socket.js" defer></script>
+    <script src="javascripts/deposit.js" defer></script>
+    <title>CRASH.ONE</title>
+</head>
+<body>
+    <div id="header">
+        <div id="crash">CRASH.ONE</div>
+        <% if(!user) { %>
+        <div><button id="login">Login</button></div>
+        <% } else { %>
+        <div id="profile">
+            <div id="deposit">DEPOSIT</div>
+            <div id="user"><%= user.username.substring(2, 8).toUpperCase() %></div>
+            <div id="balance"><%= Math.round(user.balance * 100) / 100 %> ONE</div>
+            <form id="logoutForm" action="/logout" method="post">
+            <div id="logoutDiv">
+                <button id="logoutButton">logout</button>
+            </div>
+            </form>
+            
+        </div>
+        <% } %>
+        
+    </div>
+    <div id="main">
+        <div id="game">
+            <div id="graph">
+                <div id="canvWrapper">
+                    <canvas id="canvas"></canvas>
+                    <p id="mult"></p>
+                </div>
+                <% if(!user) { %>
+                    <div id="bet"> <div id="bettext">Please login to bet</div></div>
+                <% } else { %>
+                    <div id="bet">
+                        <div id="betDiv">
+                            <div id="bettext">BET AMOUNT</div>
+                            <div id="betinputDiv">
+                                <input id="betinput" autofocus spellcheck="false" autocomplete="off" placeholder="Place your bet">
+                            </div>
+
+                            <div id="bettext">CASH OUT AT</div>
+                            <div id="cashoutInputDiv">
+                                <input id="cashoutInput" autofocus spellcheck="false" autocomplete="off" placeholder="Enter auto cash-out">
+                            </div>
+                    
+    
+                            <div id="betbuttonDiv">
+                                <button id="betButton">BET</button>
+                            </div>
+
+                            <div id="log"></div>
+                        </div>
+
+
+                        <div id="cashoutDiv">                                            
+                            <div id="cashouttext">Profit</div>
+                            <div id="cashoutButtonDiv">
+                                <button id="cashoutButton">CASHOUT</button>
+                            </div>
+                            <div id="log"></div>
+                        </div>
+
+                        <!-- <div id="depositView">
+                            <div id="address">...</div>
+                            <button id="depositExit">EXIT</button>
+                        </div> -->
+                    </div>
+                <% } %>
+            </div>
+            <div id="bets"><div id="bettext">See other player's bets here (Coming soon)</div></div>
+        </div>
+        <div id="chat">
+            <ul id="chatview"></ul>
+            <% if(!user) { %>
+                <div id="cctrl">Login to chat!</div>
+            <% } else { %>
+                <div id="cctrl">
+                    <form id="chatform">
+                        <div id="chatformdiv">
+                            <input id="chatinput" autofocus spellcheck="false" autocomplete="off" placeholder="Enter your message">
+                        </div>
+                    </form>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    
+</body>
+</html>
