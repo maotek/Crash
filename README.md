@@ -8,3 +8,5 @@ Crash crypto gambling game, made this because I found it interesting. It is heav
 
 express.js - HTML - css - javascript - postgres \
 Login via MetaMask
+
+### Educational Purposes Only
